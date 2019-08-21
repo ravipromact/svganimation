@@ -1,0 +1,72 @@
+
+.testCreation{padding: 200px 0;}
+
+/* Circle with numbers */
+.circle{margin-top:39px;width:40px;height:40px;background:#f3fdfd;border:2px solid #000641;text-align:center;font:Light 22px/27px Montserrat;letter-spacing:0;color:#000641;border-radius:50px;position:relative}
+.circle,
+.inner-text{display:flex;align-items:center;justify-content:center}
+.inner-text{width:100%;height:100%;border-radius:50%;background:#f3fdfd;position:relative;z-index:9}
+.circle:after{content:'';position:absolute;width:16px;height:16px;background:#000641;opacity:0;border-radius:100%}
+.circle:after{animation:ripple 2s ease-out infinite;animation-delay:0}
+.d-flex:nth-child(2) .circle:after{animation-delay:.2s}
+.d-flex:nth-child(3) .circle:after{animation-delay:.4s}
+.d-flex:nth-child(4) .circle:after{animation-delay:.6s}
+@keyframes ripple{
+    0%,35%{transform:scale(0);opacity:1}
+    50%{transform:scale(1.5);opacity:.8}
+    100%{opacity:0;transform:scale(4)}
+}
+
+/* Svg icon size */
+.test-done,
+.test-creation,
+.test-reports,
+.test-conduction{height: 39px;}
+.test-done{width: 39px;}
+.test-creation,
+.test-conduction{width: 32px;}
+.test-reports{width: 35px;}
+
+
+/* Svg icon Animation */
+
+/* 1) Test Creation Animation */
+.test-creation:hover .tick-mark,
+.test-creation:hover .notes{stroke-dasharray:100;stroke-dashoffset:100;animation:checkLine 5s linear .5s forwards}
+.test-creation:hover .check-list{stroke-dasharray:200;stroke-dashoffset:200;animation:checkLine 1s linear forwards}
+@keyframes checkLine{to{stroke-dashoffset: 0;}}
+
+/* 2) Test Conduction Animation */
+.test-conduction:hover .paper-sheet,
+.test-conduction:hover .paper-fold{transform-origin: 50% 50%;animation:zoomIn .3s linear forwards}
+.test-conduction:hover .tick-mark{stroke-dasharray:50;stroke-dashoffset:50;animation:checkLine .5s linear .5s forwards}
+@keyframes zoomIn{
+    0%{transform:scale(0)}
+    50%{transform:scale(0.5)}
+    100%{transform:scale(1)}
+}
+
+/* 3) Test Reports Animation */
+.test-reports:hover .pillar{animation:fadeIn .6s linear forwards;opacity: 0;}
+.test-reports:hover .pillar-mid{animation-delay: .6s}
+.test-reports:hover .pillar-high{animation-delay: 1.2s}
+.test-reports:hover .line-stroke{stroke-dasharray:50;stroke-dashoffset:50;animation:lineStroke .4s linear 1.2s forwards}
+.test-reports:hover .tick-mark{stroke-dasharray:100;stroke-dashoffset:100;animation:checkLine .2s linear 1.6s forwards}
+@keyframes fadeIn{
+    0%{opacity:0}
+    50%{opacity:0.5}
+    100%{opacity:1}
+}
+
+@keyframes lineStroke {
+    from {stroke-dashoffset: -50;}
+    to {stroke-dashoffset: 0;}
+}
+
+/* 3) Test Done Animation */
+.test-done:hover .box-outline{animation:moveLeft .4s linear forwards;}
+.test-done:hover .tick-mark{stroke-dasharray:50;stroke-dashoffset:50;animation:lineStroke .4s linear .5s forwards}
+@keyframes moveLeft{
+    from{transform: translateX(-40px);opacity: 0;}
+    to{transform: translateX(0);opacity: 1;}
+}
